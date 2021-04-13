@@ -1,9 +1,9 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Logo from '../../assets/ClothingYa.png'
+import Logo from "../../assets/ClothingYa.png";
 
-import './header.styles.scss'
+import "./header.styles.scss";
 
 const Header = () => (
   <div className="header">
@@ -14,8 +14,11 @@ const Header = () => (
       <Link className="option" to="/shop">
         Shop
       </Link>
+      <Link className="option" to="/signin">
+        Sign In
+      </Link>
     </div>
   </div>
-)
+);
 
-export default Header
+export default Header;
