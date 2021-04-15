@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import Logo from "../../assets/ClothingYa.png";
 import {auth} from '../../firebase/firebase.util'
+import CartDropdown from '../cart-dropdown/cart-dropdown.component'
+import CartIcon from '../cart-icon/cart-icon.component'
 
 import "./header.styles.scss";
 
@@ -23,7 +25,12 @@ const Header = ({currentUser}) => (
           Sign In
         </Link>
       )}
-      
+
+      {/* <CartDropdown cartItems={[]} /> */}
+      <CartIcon />
+      {/* {
+        hidden ? null : <CartDropdown />
+      } */}
     </div>
   </div>
 );
