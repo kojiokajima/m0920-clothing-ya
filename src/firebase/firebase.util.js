@@ -12,22 +12,31 @@ const config = {
 }
 
 export const createUserProfileDocument = async(userAuth, additionalData) => {
-  // --> userAuthにはuidとはemailとかいろんな情報が入ってる
+  // --> userAuthにはuidとはemailとかいろんな情報が入ってる。App.jsからやってくる
 
   if (!userAuth) return;
 
+  console.log("userAuthhhh: ", userAuth);
+
   const userRef = firestore.doc(`users/${userAuth.uid}`)
+  // userAuth.uidのは、firestoreで自動生成されたidが入ってる
 
   // const userRef = firestore.doc() // path to user object
 
   const snapshot = await userRef.get()  // --> userRefは19行目のuserRef。snapshot自体にはそんなデータ入ってない。
+  // snapshot.idにはfirebaseのauthの中にあるidが格納されてる
   // snapshotってもっといろんなデータ入ってるのかと思った。違った
 
   console.log("snapshot: ", snapshot);
 
-  if (!snapshot.exist) {
+  if (!snapshot.exists) {
     const  {displayName, email} = userAuth
+    // displayNameとemailに、userAuth.displayNameとuserAuth.emailの値を入れてる
     const createdAt = new Date()
+
+    console.log(userAuth)
+    console.log("YOO: ", displayName);
+    console.log("YOO: ", email);
 
     try {
       await userRef.set({

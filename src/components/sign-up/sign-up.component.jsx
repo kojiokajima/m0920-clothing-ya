@@ -30,6 +30,7 @@ class SignUp extends Component {
 
   try {
     const {user} = await auth.createUserWithEmailAndPassword(email, password)
+    console.log("CRESTED USER(SIGN UP): ", user);
     await createUserProfileDocument(user, {displayName})
 
     this.setState({
