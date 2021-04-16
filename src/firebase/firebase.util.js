@@ -16,7 +16,7 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
   if (!userAuth) return;
 
-  console.log("userAuthhhh: ", userAuth);
+  // console.log("userAuthhhh: ", userAuth);
 
   const userRef = firestore.doc(`users/${userAuth.uid}`)
   // userAuth.uidのは、firestoreで自動生成されたidが入ってる
@@ -27,7 +27,7 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
   // snapshot.idにはfirebaseのauthの中にあるidが格納されてる
   // snapshotってもっといろんなデータ入ってるのかと思った。違った
 
-  console.log("snapshot: ", snapshot);
+  // console.log("snapshot: ", snapshot);
 
   if (!snapshot.exists) {
     const  {displayName, email} = userAuth

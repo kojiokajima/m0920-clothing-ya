@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     let unsbscribeFromAuth = null;
     unsbscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      console.log("ONAUTHSTATECHANGED: ", userAuth);
+      // console.log("ONAUTHSTATECHANGED: ", userAuth);
       // --> このuserAuthにemailとかuidとかいろんな情報が入ってて、それをcreateUserProfileDocumentに渡してる
       
       

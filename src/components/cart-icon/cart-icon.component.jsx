@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import { bindActionCreators } from 'redux'
 
 import './cart-icon.styles.scss'
 
@@ -8,14 +7,28 @@ import {toggleCartHidden} from '../../redux/cart/cart.actions'
 
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'
 
-const CartIcon = ({toggleCartHiddenProps}) => {
+const CartIcon = ({toggleCartHiddenProps, itemCount}) => {
   return (
     <div className="cart-icon">
         <ShoppingIcon className="shopping-icon" onClick={toggleCartHiddenProps} />
-        <span className="item-count">0</span>
+        <span className="item-count">{itemCount}</span>
     </div>
   )
 }
+
+
+const mapStateToProps = (state) => {
+// const mapStateToProps = ({cart: {cartItems}}) => {
+
+  const quantity = state.cart.cartItems.reduce((acc, cur) => {
+    return acc + cur.quantity
+  }, 0)
+  // itemCount: cartItems.reduce((acc, cartItem) => (acc + cartItem.quantity), 0)
+
+  return ({
+  // itemCount: quantity
+  itemCount: quantity
+})}
 
 const mapDispatchToProps = (dispatch) => ({
   toggleCartHiddenProps: () => dispatch(toggleCartHidden())
@@ -23,4 +36,10 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 // このコンポーネントでは変数のprops、つまりstate?を使わないからmapStateToPropsがnullになってるってことかなぁ
-export default connect(null, mapDispatchToProps)(CartIcon)
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon)
+
+// function sumOfQuantity(arr) {
+//   const reducer = (sum, item) => sum + item.quantity
+//   const initVal = 0
+//   return arr.reduce(reducer, initVal)
+// }
