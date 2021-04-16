@@ -42,6 +42,7 @@ const Header = ({ currentUser, hiddenProps }) => (
 // const mapStateToProps = ({cart: {hidden}}) => ({
 //   hidden: hidden
 // })
+// こうすることで、このコンポーネント内でhiddenPropsっていう名前でstoreのstate.cart.hiddenが使えるようになる
 const mapStateToProps = (state) => ({
   hiddenProps: state.cart.hidden
 })

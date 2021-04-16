@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { bindActionCreators } from 'redux'
+// import { bindActionCreators } from 'redux'
 
 import './cart-icon.styles.scss'
 
@@ -19,6 +19,8 @@ const CartIcon = ({toggleCartHiddenProps}) => {
 
 const mapDispatchToProps = (dispatch) => ({
   toggleCartHiddenProps: () => dispatch(toggleCartHidden())
+  // toggleCartHiddenProps: toggleCartHidden
 })
 
+// このコンポーネントでは変数のprops、つまりstate?を使わないからmapStateToPropsがnullになってるってことかなぁ
 export default connect(null, mapDispatchToProps)(CartIcon)

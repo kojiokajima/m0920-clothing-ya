@@ -1,9 +1,10 @@
 import {ADD_CART_ITEM, TOGGE_CART_HIDDEN} from './cart.actions'
+import {addItemToCart} from './cart.util'
 
 // init state
 const INITIAL_STATE = {
   cartItems: [],
-  hidden: false
+  hidden: true
 }
 
 // reducer function
@@ -17,7 +18,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case ADD_CART_ITEM:
       return {
         ...state,
-        cartItems: [...state.cartItems, action.payload]
+        cartItems: addItemToCart(state.cartItems, action.payload) // -> cartItemsは配列、action.payloadはなんだっけ
       }
     default:
       return state;
