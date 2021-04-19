@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import { Switch, Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import HomePage from './pages/homepage/homepage.component';
 import Header from './components/header/header.component';
+// import ShopPage from './pages/shop/shop.component'
 import ShopPage from './pages/shop/shop.component'
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
 import { auth, createUserProfileDocument } from './firebase/firebase.util'
+import { addCollectionAndDocuments } from './firebase/firebase.util'
 
 const PageNotFound = () => (
   <div>
@@ -14,7 +17,7 @@ const PageNotFound = () => (
   </div>
 )
 
-function App() {
+function App({ collectionArray }) {
   const [currentUser, setCurrentUser] = useState(null)
 
   useEffect(() => {
@@ -22,9 +25,8 @@ function App() {
     unsbscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       // console.log("ONAUTHSTATECHANGED: ", userAuth);
       // --> このuserAuthにemailとかuidとかいろんな情報が入ってて、それをcreateUserProfileDocumentに渡してる
-      
-      
-      console.log("CREATEPROFILEDOCUMENT(APP)" );
+
+
       const userRef = await createUserProfileDocument(userAuth)
 
       if (userAuth) {
@@ -44,6 +46,12 @@ function App() {
       unsbscribeFromAuth()
     }
   }, [])
+
+  // useEffect(() => {
+  //   console.log(collectionArray);
+  //   addCollectionAndDocuments('collections', collectionArray.map(({title, items}) => ({title, items})) ) // 2nd argument is the collections of array
+
+  // }, [])
 
 
 
@@ -66,4 +74,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateProps = (state) => {
+
+  return ({
+    collectionArray: state.shop.collections
+  })
+}
+
+export default connect(mapStateProps)(App);
