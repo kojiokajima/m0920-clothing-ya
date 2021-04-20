@@ -15,6 +15,8 @@ import {
 import { addItem } from '../../redux/cart/cart.actions'
 
 const CollectionItem = ({ item, addItemProps}) => {
+    // --> itemはCollectionPreviewから渡ってきたオブジェクト、って訳でもなさそう
+    // --> addItemPropsはmapDispatchToPropsで作られたprops
     const {name, price, imageUrl} = item
     return(
     <CollectionItemContainer>

@@ -13,15 +13,15 @@ const WithSpinner = WrappedComponent => {
         // --> otherPropsの中身はこんな感じ -- {history: {…}, location: {…}, match: {…}, staticContext: undefined, dispatch: ƒ}
         // --> なんでやねん。なんだこれ。
         // ------------------------------------
-        // return isLoading ? (
-        //     <SpinnerOverlay>
-        //         <SpinnerContainer />
-        //     </SpinnerOverlay>
-        // ) : (
-        //     <WrappedComponent {...otherProps} />
-        // )
+        return isLoading ? (
+            <SpinnerOverlay>
+                <SpinnerContainer />
+            </SpinnerOverlay>
+        ) : (
+            <WrappedComponent {...otherProps} />
+        )
         // ------------------------------------
-        return <WrappedComponent {...otherProps} />
+        // return <WrappedComponent {...otherProps} />
         // ------------------------------------
     }
     return Spinner
@@ -34,3 +34,25 @@ export default WithSpinner
 // Hatsが4個ずらー、Mensが4個ずらーって書いてあるページ。
 // んで、collection-page.container.jsx(結局CollectionPageコンポーネント)っていうのは、
 // CollectionPage、空っぽなんだけどas of Apr 19
+
+
+
+
+// import React from 'react'
+
+// import { SpinnerContainer, SpinnerOverlay} from './with-spinner.styles'
+
+// const WithSpinner = WrappedComponent => {
+//     const Spinner = ({ isLoading, ...otherProps}) => {
+//         return isLoading ? (
+//             <SpinnerOverlay>
+//                 <SpinnerContainer />
+//             </SpinnerOverlay>
+//         ): (
+//             <WrappedComponent {...otherProps} />
+//         )
+//     }
+//     return Spinner
+// }
+
+// export default WithSpinner

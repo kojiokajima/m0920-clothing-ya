@@ -13,6 +13,8 @@ import { selectCollection } from '../../redux/shop/shop.selector'
 const CollectionPage = ({ collections }) => {
     console.log('cols: ', collections)
     const {title, items} = collections
+      // --> collectionsオブジェクトにはtitleとitemsプロパティないから、まるっと表示されてないのかそうかそうか
+      //   console.log("COLLECTIONSSSS: ", collections); // --> {hats: {…}, mens: {…}, jackets: {…}, womens: {…}, sneakers: {…}}
     return(
         <CollectionPageContainer>
             <CollectionTitle>{title}</CollectionTitle>
