@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 
 import WithSpinner from '../withSpinner/with-spinner.component';
-import CollectionOverview from './collections-overview.component';
+import CollectionOverview from './collection-overview.component';
 
 const mapStateToProps = state => ({
     isLoading: state.shop.isFetching

@@ -12,6 +12,7 @@ export const fetchCollectionsStart = () => ({
 
 export const fetchCollectionsStartAsync = () => {
     return dispatch => {
+        console.log("fetchCollectionsStartAsync EVOKED");
         const collectionRef = firestore.collection('collections')
 
         dispatch(fetchCollectionsStart())

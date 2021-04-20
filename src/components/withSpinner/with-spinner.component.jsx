@@ -9,7 +9,7 @@ const WithSpinner = WrappedComponent => {
     // --> collection-overview.container.jsxでいうCollectionOverview、
     // --> collection-page.container.jsxでいうCollectionPageてことか
     const Spinner = ({ isLoading, ...otherProps}) => {
-        console.log("OTHER PROPS", otherProps);
+        // console.log("OTHER PROPS", otherProps);
         // --> otherPropsの中身はこんな感じ -- {history: {…}, location: {…}, match: {…}, staticContext: undefined, dispatch: ƒ}
         // --> なんでやねん。なんだこれ。
         // ------------------------------------
