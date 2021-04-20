@@ -7,6 +7,8 @@ import CustomButton from '../custom-button/custom-button.component'
 import {addItem} from '../../redux/cart/cart.actions'
 
 const CollectionItem = ({ item, addItemProps}) => {
+    // --> itemはCollectionPreviewから渡ってきたオブジェクト
+    // --> addItemPropsはmapDispatchToPropsで作られたprops
     const {name, price, imageUrl} = item
     return (
     <div className="collection-item">
@@ -16,7 +18,8 @@ const CollectionItem = ({ item, addItemProps}) => {
             <span className="price">{price}</span>
         </div>
         <CustomButton onClick={() => addItemProps(item)} >Add to Cart</CustomButton>
-        {/* <CustomButton onClick={addItemProps(item)} >Add to Cart</CustomButton> */}
+        {// -->addItemPropsにitemっていうオブジェクトを渡してる。 addItemはcart.actions参照
+        }
     </div>
 )}
 

@@ -12,5 +12,16 @@ const CollectionPageContainer = compose(
     connect(mapStateToProps),
     WithSpinner
 )(CollectionPage)
+// やってること自体はきっと、
+// WithSpinner(CollectionPage)からの
+// connect(mapStateToProps)(WithSpinner(CollectionPage))ってことかな
+// てことはWithSpinnerで返ってきたコンポーネントとstoreを繋げてるってこと?かな?
+
+
 
 export default CollectionPageContainer
+
+// composeってなんだああああああああああああ
+
+// HOCはコンポーネントを受け取って、新しいコンポーネントを返す関数です。って。どういうこと。
+// const EnhancedComponent = higherOrderComponent(WrappedComponent);

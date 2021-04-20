@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "./cart-dropdown.styles.scss";
 
 import CartItem from "../cart-item/cart-item.component";
-import CustomButton from "../custom-button/custom-button.component";
+// import CustomButton from "../custom-button/custom-button.component";
 import {CartDropdownContainer, CartDropdownButton} from './cart-dropdown.styles'
 
 

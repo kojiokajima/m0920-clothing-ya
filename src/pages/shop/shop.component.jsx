@@ -21,6 +21,8 @@ const ShopPage = ({
   fetchCollectionsStartAsyncProps,
   updateCollectionProps,
   match
+//   --> 最初の2つのpropsは、下のmapStateToPropsで作ったprops
+  // --> matchはオブジェクト({path: "/shop", url: "/shop", isExact: true, params: {…}})
 }) => {
   useEffect(() => {
     fetchCollectionsStartAsyncProps()
@@ -30,7 +32,11 @@ const ShopPage = ({
     const collectionRef = firestore.collection('collections')
 
     unsubscribeFromSnapShot = collectionRef.onSnapshot(async (snapShot) => {
+      // --> snapShotは謎のあれ(t {_firestore: t, _delegate: t})
+      console.log("SNAPSHOT IS ", snapShot);
       const collectionsMap = convertCollectionSnapShotToMap(snapShot)
+      // --> いきなりわかりやすいやつになった({hats: {…}, mens: {…}, jackets: {…}, womens: {…}, sneakers: {…}})
+      console.log("collectionsMap is ", collectionsMap);
       updateCollectionProps(collectionsMap)
     })
 

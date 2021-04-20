@@ -9,7 +9,8 @@ import Header from './components/header/header.component';
 import ShopPage from './pages/shop/shop.component'
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
 import { auth, createUserProfileDocument } from './firebase/firebase.util'
-import { addCollectionAndDocuments } from './firebase/firebase.util'
+// import { addCollectionAndDocuments } from './firebase/firebase.util'
+// import CollectionPage from './pages/collection/collection-page.component'
 
 const PageNotFound = () => (
   <div>
@@ -70,6 +71,8 @@ function App({ collectionArray }) {
         <Route component={PageNotFound} />
 
       </Switch>
+      <br/><br/><br/><br/><br/>
+      {/* <CollectionPage /> */}
     </div>
   );
 }
