@@ -65,6 +65,8 @@ export const fetchCollectionsStartAsync = () => {
 }
 
 export const fetchCollectionsSuccess = (collectionsMap) => ({
+    // --> shop.component.jsxで呼ばれたときはcollectionsMapっていうオブジェクトが引数に入ってる
+    // --> collectionsMapはこんな感じ -- {hats: {…}, mens: {…}, jackets: {…}, womens: {…}, sneakers: {…}}
     type: FETCH_COLLECTIONS_SUCCESS,
     payload: collectionsMap
 })

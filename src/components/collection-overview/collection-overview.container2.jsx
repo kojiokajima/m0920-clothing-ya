@@ -23,6 +23,7 @@ const CollectionOverviewContainer = compose(
 // --> WithSpinner(CollectionOverview)からの
 // --> connect(mapStateToProps)(WithSpinner(CollectionOverview))
 // --> てことはWithSpinnerで返ってきたコンポーネントとstoreを繋げてるってこと?かな?
+//  = connect(mapStateToProps)(WithSpinner(CollectionOverview))
 
 
 export default CollectionOverviewContainer;
