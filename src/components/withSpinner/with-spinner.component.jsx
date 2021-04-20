@@ -33,4 +33,4 @@ export default WithSpinner
 // まず、collection-overview.component.jsx(結局CollectionOverviewコンポーネント)っていうのは、
 // Hatsが4個ずらー、Mensが4個ずらーって書いてあるページ。
 // んで、collection-page.container.jsx(結局CollectionPageコンポーネント)っていうのは、
-// あれ、CollectionPageコンポーネントどこにも表示されてなくない?
+// CollectionPage、空っぽなんだけどas of Apr 19

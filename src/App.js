@@ -10,7 +10,8 @@ import ShopPage from './pages/shop/shop.component'
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
 import { auth, createUserProfileDocument } from './firebase/firebase.util'
 // import { addCollectionAndDocuments } from './firebase/firebase.util'
-// import CollectionPage from './pages/collection/collection-page.component'
+import CollectionPage from './pages/collection/collection-page.component'
+import CollectionOverview from './components/collection-overview/collections-overview.component'
 
 const PageNotFound = () => (
   <div>
@@ -72,7 +73,13 @@ function App({ collectionArray }) {
 
       </Switch>
       <br/><br/><br/><br/><br/>
-      {/* <CollectionPage /> */}
+      ------------------------------------------
+      <CollectionPage />
+      ------------------------------------------
+      <br/><br/><br/><br/><br/>
+      ------------------------------------------
+      <CollectionOverview />
+      ------------------------------------------
     </div>
   );
 }
