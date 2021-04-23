@@ -7,15 +7,17 @@ import { CollectionsOverviewContainer } from './collection-overview.styles'
 import CollectionPreview from '../collection-preview/collection-preview.component';
 import { selectCollectionForPreview } from '../../redux/shop/shop.selector'
 
-const CollectionOverview = ({ collectionsProps }) => (
+const CollectionOverview = ({ collections }) => {
+    console.log("COLLECTIONS IS  ", collections);
+    return (
     <CollectionsOverviewContainer>
     {
-        collectionsProps && collectionsProps.map(({ id, ...otherCollectionProps}) => (
+        collections && collections.map(({ id, ...otherCollectionProps}) => ( // --> otherCollectionPropsにはitems(配列)とtitle(文字列)が入ってるはず
             <CollectionPreview key={id} {...otherCollectionProps} />
         ))
     }
     </CollectionsOverviewContainer>
-)
+)}
 
 // const mapStateToProps = state => {
 //   console.log("STATE IS ", state);
@@ -32,8 +34,5 @@ const CollectionOverview = ({ collectionsProps }) => (
 //     // --> 要はあれだ、あとでmapで回したいからオブジェクトを配列にしてるんだ
 // })}
 
-const mapStateToProps = createStructuredSelector({
-    collectionsProps: selectCollectionForPreview
-})
 
-export default connect(mapStateToProps)(CollectionOverview)
+export default CollectionOverview

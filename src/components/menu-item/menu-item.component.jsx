@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // import './menu-item.styles.scss';
 import {
@@ -13,8 +13,15 @@ import {
 class MenuItem extends Component {
   render() {
     const { title, imageUrl, size, history, linkUrl, match } = this.props
+    console.log("match.url is ", match.url);
+    console.log("linkUrl is ", linkUrl);
     return (
-      <MenuItemContainer size={size} id={title} onClick={() => history.push(`${match.url}/${linkUrl}`)} >
+      <MenuItemContainer 
+        size={size} 
+        id={title} 
+        onClick={() => history.push(`${match.url}${linkUrl}`)}
+        // onClick={() => console.log("HOHHOHHO")}
+      >
         <BackgroundImageContainer
           className='background-image'
           imageUrl={imageUrl}

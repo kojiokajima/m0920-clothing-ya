@@ -2,60 +2,47 @@ import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-// import SHOP_DATA from './shop.data.js'
-import {
-  firestore,
-  convertCollectionSnapShotToMap,
-} from "../../firebase/firebase.util";
-
-import {
-  fetchCollectionsStart,
-  fetchCollectionsSuccess,
-  fetchCollectionsFailure,
-  updateCollection,
-} from "../../redux/shop/shop.actions";
+import {fetchCollectionsStartAsync} from '../../redux/shop/shop.actions'
 
 import CollectionOverviewContainer from "../../components/collection-overview/collection-overview.container";
 import CollectionPageContainer from "../collection/collection-page.container";
 
-const ShopPage = ({
-  fetchCollectionsStartProps,
-  fetchCollectionsSuccessProps,
-  updateCollectionProps,
-  fetchCollectionsFailureProps,
-  match,
-}) => {
+const ShopPage = ({fetchCollectionsStartAsyncProps, match}) => {
+  console.log("I AM MATCH: ", match);
+  // useEffect(() => {
+  //   // fetchCollectionsStartAsyncProps() //promise-based fetching of data
+
+  //   console.log("MATCH: ", match); // --> {path: "/shop", url: "/shop", isExact: true, params: {…}}
+  //   // --> たぶんmatchはpropsの中に自動的に入るやつ
+
+
+  //   let unsubscribeFromSnapShot = null;
+
+  //   const collectionRef = firestore.collection("collections");
+
+  //   try {
+  //     unsubscribeFromSnapShot = collectionRef.onSnapshot(async (snapShot) => {
+  //       // --> snapShotは謎のあれ(t {_firestore: t, _delegate: t})
+  //       fetchCollectionsStartProps();
+  //       const collectionsMap = await convertCollectionSnapShotToMap(snapShot);
+  //       // --> いきなりわかりやすいやつになった({hats: {…}, mens: {…}, jackets: {…}, womens: {…}, sneakers: {…}})
+  //       // updateCollectionProps(collectionsMap)
+  //       fetchCollectionsSuccessProps(collectionsMap);
+  //       // --> 今unsubscribeFromSnapShotには謎の関数が入ってる
+  //       // --> あーあれか、unsubscribeFromSnapShotはfetchCollectionsStartPropsとfetchCollectionsSuccessPropsを実行するためのものだったのか.
+  //     });
+  //   } catch (error) {
+  //     fetchCollectionsFailureProps(error.message);
+  //   }
+
+  //   return () => {
+  //     console.log("HAHAHA: ", unsubscribeFromSnapShot());
+  //     unsubscribeFromSnapShot(); //unsubscribe
+  //   };
+  // }, []);
   useEffect(() => {
-    // fetchCollectionsStartAsyncProps() //promise-based fetching of data
-
-    console.log("MATCH: ", match); // --> {path: "/shop", url: "/shop", isExact: true, params: {…}}
-    // --> たぶんmatchはpropsの中に自動的に入るやつ
-
-
-    let unsubscribeFromSnapShot = null;
-
-    const collectionRef = firestore.collection("collections");
-
-    try {
-      unsubscribeFromSnapShot = collectionRef.onSnapshot(async (snapShot) => {
-        // --> snapShotは謎のあれ(t {_firestore: t, _delegate: t})
-        fetchCollectionsStartProps();
-        const collectionsMap = await convertCollectionSnapShotToMap(snapShot);
-        // --> いきなりわかりやすいやつになった({hats: {…}, mens: {…}, jackets: {…}, womens: {…}, sneakers: {…}})
-        // updateCollectionProps(collectionsMap)
-        fetchCollectionsSuccessProps(collectionsMap);
-        // --> 今unsubscribeFromSnapShotには謎の関数が入ってる
-        // --> あーあれか、unsubscribeFromSnapShotはfetchCollectionsStartPropsとfetchCollectionsSuccessPropsを実行するためのものだったのか.
-      });
-    } catch (error) {
-      fetchCollectionsFailureProps(error.message);
-    }
-
-    return () => {
-      console.log("HAHAHA: ", unsubscribeFromSnapShot());
-      unsubscribeFromSnapShot(); //unsubscribe
-    };
-  }, []);
+    fetchCollectionsStartAsyncProps() //promise-based fetching of data
+  }, [])
 
   return (
     <div className="shop-page">
@@ -105,13 +92,16 @@ const ShopPage = ({
 //   collectionsProps: state.shop.collections,
 // })
 
+// const mapDispatchToProps = (dispatch) => ({
+//   updateCollectionProps: (collectionsMap) =>
+//     dispatch(updateCollection(collectionsMap)),
+//   fetchCollectionsStartProps: () => dispatch(fetchCollectionsStart()),
+//   fetchCollectionsSuccessProps: (collectionsMap) =>
+//     dispatch(fetchCollectionsSuccess(collectionsMap)),
+//   fetchCollectionsFailureProps: (err) => dispatch(fetchCollectionsFailure(err)),
+// });
 const mapDispatchToProps = (dispatch) => ({
-  updateCollectionProps: (collectionsMap) =>
-    dispatch(updateCollection(collectionsMap)),
-  fetchCollectionsStartProps: () => dispatch(fetchCollectionsStart()),
-  fetchCollectionsSuccessProps: (collectionsMap) =>
-    dispatch(fetchCollectionsSuccess(collectionsMap)),
-  fetchCollectionsFailureProps: (err) => dispatch(fetchCollectionsFailure(err)),
-});
+  fetchCollectionsStartAsyncProps: () => dispatch(fetchCollectionsStartAsync())
+})
 
 export default connect(null, mapDispatchToProps)(ShopPage);

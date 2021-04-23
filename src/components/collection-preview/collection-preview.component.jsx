@@ -10,9 +10,10 @@ import {
 
 import CollectionItem from "../collection-item/collection-item.component";
 
-const CollectionPreview = ({ title, items, history, match, routeName }) => {
-  console.log("HISTORY: ", history);
-  console.log("HISTORY: ", history.push);
+const CollectionPreview = ({ title, items, history, match, routeName, ...other }) => {
+// const CollectionPreview = (props) => {
+  // console.log("HISTORY: ", history);
+  // console.log("HISTORY: ", history.push);
   return (
     // --> 渡ってきてるpropsはこんな感じのやつ -- {title: "Hats", items: Array(9), routeName: "hats"}
     // --> そのpropsの中のtitleとitemsだけ分解して取り出して使ってるってことなのかそうなのか
@@ -21,7 +22,9 @@ const CollectionPreview = ({ title, items, history, match, routeName }) => {
     // console.log("TITLE: ", items);
     <CollectionPreviewContainer>
       <TitleContainer
-        onClick={() => history.push(`${match.path}/${routeName}`)}
+        // onClick={() => history.push(`${match.path}/${routeName}`)}
+        onClick={() => history.push(`${match.path}/${title.toLowerCase()}`)}
+        // onClick={() => console.log({...other})}
       >
         {title && title.toUpperCase()}
       </TitleContainer>
